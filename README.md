@@ -3,7 +3,7 @@ The IndivNetwork package. An R tool for individual temporal network analysis.
 
 
 # Installation
-This is currently the only available and developmental version of the package. You can install this package from source on Windows. 
+This is currently the only available and developmental version of the package. You can install it from source on Windows. 
 
 ```ruby
 setwd("path to package folder")
