@@ -25,7 +25,7 @@ Here is a table that illustrates the required data structure. Y1 through Y10 rep
 There is no constraint on the number of nodes or covariates. However, only binary nodes and binary or scaled, continuous covariates are permissible.  
 
 # IndivIsing
-This function is used to estimate the network. It only supports lag-1 factorization in estimating temporal networks.
+This function is used to estimate the static or temporal network. It only supports lag-1 factorization in estimating temporal networks.
 In addition to the dataset, the following input parameters need to be specified:
 1. `y_index` and `x_index`, the indices of the nodes and individual characteristics, respectively.
 2. `networkModel`, 'static' or 'temporal' as appropriate.
@@ -39,3 +39,24 @@ Some important results returned by IndivIsing are:
 1. `estimated_thresholds` and `estimated_coeff_raw`, the estimated intercepts and coefficients in the extended Ising model, respectively.
 2. `estimated_bias` The formula of the estimated bias term, including the estimated intercept and the coefficients of the major effects of the individual characteristics. 
 3. `estimated_formula` The formula of the estimated edge weights, including the coefficients of the major effects of the nodes and the coefficients of the interaction terms of the nodes and the individual characteristics.
+
+*Example IndivIsing results*
+
+# IndivNetwork
+It generates the individual static or temporal network for a specific subject. The required inputs are:
+1. `IsingResult`, the object returned by the IndivIsing function.
+2. `target_id` The ID of the specific subject that an individual static or temporal network
+#'   is to be fitted. 
+#' @param covar_vec The vector of individual characteristics for a specific subject to plot. 
+#'   The order has to be the same as x_index. Have to be assigned if target_id is not given.
+`data`, the id The column name in 'data' that indicates the ID of each subject.
+
+
+
+#' @return An IndivNetwork object. 
+#' @returns `estimated_network` The estimated adjacent matrix for the specific subject. 
+#' @returns `net_centrality` A list containing the centrality statistics of the generated graph.
+#' @returns `node_centrality` The matrix of the calculated centrality values. 
+#' @returns `time` Time used for computation.
+
+
