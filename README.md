@@ -35,18 +35,7 @@ In addition to the dataset, the following input parameters need to be specified:
 6. `gamma`, hyperparameter gamma in the extended BIC.
 7. `AND`, can be TRUE of FALSE to indicate whether the AND-rule or the OR-rule should be used to define the edges in the network.
 
-The  `estimated_thresholds` The estimated intercepts in the extended Ising model.
-#' @returns `estimated_coeff_raw` The estimated coefficients in the extended Ising model.
-#' @returns `estimated_bias` The formula of the estimated bias term, including the estimated 
-#'   intercept and the coefficients of the major effects of the individual characteristics. 
-#' @returns `estimated_bias_index` The list of the indices (in the estimated_coeff_raw matrix) of the features 
-#'   that are involved in the determination of the bias for each node. 
-#' @returns `estimated_formula` The formula of the estimated edge weights, including the 
-#'   coefficients of the major effects of the nodes and the coefficients of the interaction terms of the
-#'   nodes and the individual characteristics.
-#' @returns `estimated_formula_index` The list of the indices (in the estimated_coeff_raw matrix) of the nodes and interaction terms 
-#' that are involved in the determination of the edges for each node. 
-#' @returns `time` Time used for computation.
-
-
-#' @param
+Some important results returned by IndivIsing are: 
+1. `estimated_thresholds` and `estimated_coeff_raw`, the estimated intercepts and coefficients in the extended Ising model, respectively.
+2. `estimated_bias` The formula of the estimated bias term, including the estimated intercept and the coefficients of the major effects of the individual characteristics. 
+3. `estimated_formula` The formula of the estimated edge weights, including the coefficients of the major effects of the nodes and the coefficients of the interaction terms of the nodes and the individual characteristics.
