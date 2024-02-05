@@ -19,7 +19,6 @@ Here is a table that illustrates the required data structure. Y1 through Y10 rep
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/NA_exdata.PNG?raw=true)
 
 
-
 There is no constraint on the number of nodes or covariates. However, only binary nodes and binary or scaled, continuous covariates are permissible.  
 
 # IndivIsing
@@ -36,10 +35,11 @@ In addition to the dataset, the following input parameters need to be specified:
 Some important results returned by IndivIsing are: 
 1. `estimated_thresholds` and `estimated_coeff_raw`, the estimated intercepts and coefficients in the extended Ising model, respectively.
 2. `estimated_bias` The formula of the estimated bias term, including the estimated intercept and the coefficients of the major effects of the individual characteristics. 
-3. `estimated_formula` The formula of the estimated edge weights, including the coefficients of the major effects of the nodes and the coefficients of the interaction terms of the nodes and the individual characteristics.
+3. `estimated_formula` The formula of the estimated edge weights, including the coefficients of the major effects of the nodes and the coefficients of the interaction terms of the nodes and the individual characteristics. An estimated formula that looks as follows -
 
-*Example IndivIsing results*
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndIsing_example.PNG)
 
+suggests that the weight of the edge directed from node Y7 to node Y2 consists of the main effect of Y7 on Y2 (0.555) and the effect of the interaction between Y7 and X3 (0.792) on Y2.
 # IndivNetwork
 It generates the individual static or temporal network for a specific subject. The required inputs are:
 1. `IsingResult`, the object returned by the IndivIsing function.
