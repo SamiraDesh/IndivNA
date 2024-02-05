@@ -35,26 +35,23 @@ In addition to the dataset, the following input parameters need to be specified:
 Some important results returned by IndivIsing are: 
 1. `estimated_thresholds` and `estimated_coeff_raw`, the estimated intercepts and coefficients in the extended Ising model, respectively.
 2. `estimated_bias` The formula of the estimated bias term, including the estimated intercept and the coefficients of the major effects of the individual characteristics. 
-3. `estimated_formula` The formula of the estimated edge weights, including the coefficients of the major effects of the nodes and the coefficients of the interaction terms of the nodes and the individual characteristics. An estimated formula that looks as follows -
+3. `estimated_formula` The formula of the estimated edge weights, including the coefficients of the major effects of the nodes and the coefficients of the interaction terms of the nodes and the individual characteristics.
+  
+An estimated formula that looks as follows
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndIsing_example1.PNG)
 
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndIsing_example.PNG)
-
-suggests that the weight of the edge directed from node Y7 to node Y2 consists of the main effect of Y7 on Y2 (0.555) and the effect of the interaction between Y7 and X3 (0.792) on Y2.
+for the circled formula suggests that the weight of the edge directed from node Y7 to node Y2 consists of the main effect of Y7 on Y2 (0.555) and the effect of the interaction between Y7 and X3 (0.792) on Y2.
 # IndivNetwork
 It generates the individual static or temporal network for a specific subject. The required inputs are:
 1. `IsingResult`, the object returned by the IndivIsing function.
-2. `target_id` The ID of the specific subject that an individual static or temporal network
-#'   is to be fitted. 
-#' @param covar_vec The vector of individual characteristics for a specific subject to plot. 
-#'   The order has to be the same as x_index. Have to be assigned if target_id is not given.
-`data`, the id The column name in 'data' that indicates the ID of each subject.
+2. `target_id` The ID of the specific subject for whom an individual static or temporal network is to be fitted. 
+3. `covar_vec` The vector of individual characteristics for a specific subject of interest needed if `target_id` has not been assigned. The order has to be the same as x_index.
+4. `data` and `id`, the original data set and name of the column in it that indicates the ID of each subject.
 
+A subject with all covariate features equal to 1 with the estimated network illustrated above has an estimated adjacent matrix that looks like this:
 
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNetwork_example.PNG)
 
-#' @return An IndivNetwork object. 
-#' @returns `estimated_network` The estimated adjacent matrix for the specific subject. 
-#' @returns `net_centrality` A list containing the centrality statistics of the generated graph.
-#' @returns `node_centrality` The matrix of the calculated centrality values. 
-#' @returns `time` Time used for computation.
-
-
+This result is stored as `estimated_network`. Another important output of this function is `node_centrality`, which is the matrix of calculated centrality values. In the temporal network case, the statistics estimated are Betweenness, Closeness, InStrength, OutStrength, OutExpectedInfluence and InExpectedInfluence whereas in the case of a static network, given the non-directionality of edges, only Betweenness, Closeness, Strength and ExpectedInfluence will be estimated.
+ 
+# IndivBootSplitting
