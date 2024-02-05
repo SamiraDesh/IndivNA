@@ -16,9 +16,7 @@ For successful installation, you need to have `devtools` and `RTools` installed.
 # Data
 Here is a table that illustrates the required data structure. Y1 through Y10 represent the nodes i.e., the variables that form our network. X1 through X5 represent the characteristics/ covariates of each observation that may affect the associations between nodes i.e. they account for individual variability in the estimated networks. There are two observations with values at three time points each. 
 
-<picture>
-
-</picture>
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/NA_exdata.PNG?raw=true)
 
 
 
