@@ -1,5 +1,5 @@
-# IndivNA
-The IndivNetwork package. An R tool for individual static and temporal network analysis.
+# The IndivNetwork package
+An R tool for individual static and temporal network analysis.
 
 
 # Installation
