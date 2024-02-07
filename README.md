@@ -22,15 +22,15 @@ Here is a table that illustrates the required data structure. Y1 through Y10 rep
 There is no constraint on the number of nodes or covariates. However, only binary nodes and binary or scaled, continuous covariates are permissible.  
 
 # IndivIsing
-Estimates the static or temporal network. It only supports lag-1 factorization in estimating temporal networks.
-In addition to the dataset, the following input parameters need to be specified:
-1. `y_index` and `x_index`, the indices of the nodes and individual characteristics, respectively.
-2. `networkModel`, 'static' or 'temporal' as appropriate.
-3. `timepoint`, column name of the timepoint variable for the construction of temporal networks. If `networkModel='static'`, then need not be specified.
-4. `family`, must be 'binomial' since it is the only supported type for nodes.
-5. `lowerbound.lambda`, minimum value of tuning parameter lambda (regularization parameter). If one has two networks of different sample sizes but the same number of parameters p, they can be directly compared by setting this value equal to sqrt(log(p)/n), n being the number of observations in the smaller group. 
-6. `gamma`, hyperparameter gamma in the extended BIC.
-7. `AND`, can be TRUE of FALSE to indicate whether the AND-rule or the OR-rule should be used to define the edges in the network.
+Estimates the static or temporal network. It only supports lag-1 factorization in estimating temporal networks. The following input parameters need to be specified:
+1. `data`, would be the training portion of the original data set in case of data splitting inference and the entire data set otherwise.
+2. `y_index` and `x_index`, the indices of the nodes and individual characteristics, respectively.
+3. `networkModel`, 'static' or 'temporal' as appropriate.
+4. `timepoint`, column name of the timepoint variable for the construction of temporal networks. If `networkModel='static'`, then need not be specified.
+5. `family`, must be 'binomial' since it is the only supported type for nodes.
+6. `lowerbound.lambda`, minimum value of tuning parameter lambda (regularization parameter). If one has two networks of different sample sizes but the same number of parameters p, they can be directly compared by setting this value equal to sqrt(log(p)/n), n being the number of observations in the smaller group. 
+7. `gamma`, hyperparameter gamma in the extended BIC.
+8. `AND`, can be TRUE of FALSE to indicate whether the AND-rule or the OR-rule should be used to define the edges in the network.
 
 Some important results returned by IndivIsing are: 
 1. `estimated_thresholds` and `estimated_coeff_raw`, the estimated intercepts and coefficients in the extended Ising model, respectively.
@@ -54,13 +54,18 @@ A subject with all covariate features equal to 1 with the estimated network illu
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNetwork_example.PNG)
 
 This result is stored as `estimated_network`. This matrix translates to the following network:
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/NtwrkDiag_example.PNG)
+
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/NtwrkDiag_example.png)
 
 
 Another important output of this function is `node_centrality`, which is the matrix of calculated centrality values. In the temporal network case, the statistics estimated are Betweenness, Closeness, InStrength, OutStrength, OutExpectedInfluence and InExpectedInfluence whereas in the case of a static network, given the non-directionality of edges, only Betweenness, Closeness, Strength and ExpectedInfluence will be estimated.
- 
+
 # IndivBootSplitting
- Performs data splitting inference by permutation test on the individual static or temporal network using bootstrap to evaluate its accuracy and stability. Inputs include:
+Evaluates the accuracy and stability of the estimated individual static or temporal network. This is accomplished through bootstrap data splitting inference by permutation test, discussed in our previous work (REF). Inputs include:
  1. `type`, the type of bootstrap procedure. This can either be `"nonparametric"` for testing the accuracy of the estimated edges and centrality indices or `"casedropping"` for assessing the stability of the calculated centrality indices.
  2. `sample_prob`, the vector of sampling proportion for casedropping bootstrap.
  3. `nBoots` the number of bootstraps.
+
+Two outputs returned by this function that are of note -
+1. `IsingResult_new`, the new IndivIsing model fitted on the inference data set, the part of the original data set not used for training .
+2. `bootResults`, a list containing the bootstraped networks.
