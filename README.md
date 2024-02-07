@@ -1,5 +1,5 @@
 # IndTempNetAna
-The IndivNetwork package. An R tool for individual temporal network analysis.
+The IndivNetwork package. An R tool for individual static and temporal network analysis.
 
 
 # Installation
@@ -41,6 +41,7 @@ An estimated formula that looks as follows
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndIsing_example1.PNG)
 
 for the circled formula suggests that the weight of the edge directed from node Y7 to node Y2 consists of the main effect of Y7 on Y2 (0.555) and the effect of the interaction between Y7 and X3 (0.792) on Y2.
+
 # IndivNetwork
 Generates the individual static or temporal network for a specific subject. The required inputs are:
 1. `IsingResult`, the object returned by the IndivIsing function.
@@ -52,17 +53,14 @@ A subject with all covariate features equal to 1 with the estimated network illu
 
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNetwork_example.PNG)
 
-This result is stored as `estimated_network`. Another important output of this function is `node_centrality`, which is the matrix of calculated centrality values. In the temporal network case, the statistics estimated are Betweenness, Closeness, InStrength, OutStrength, OutExpectedInfluence and InExpectedInfluence whereas in the case of a static network, given the non-directionality of edges, only Betweenness, Closeness, Strength and ExpectedInfluence will be estimated.
+This result is stored as `estimated_network`. This matrix translates to the following network:
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/NtwrkDiag_example.PNG)
+
+
+Another important output of this function is `node_centrality`, which is the matrix of calculated centrality values. In the temporal network case, the statistics estimated are Betweenness, Closeness, InStrength, OutStrength, OutExpectedInfluence and InExpectedInfluence whereas in the case of a static network, given the non-directionality of edges, only Betweenness, Closeness, Strength and ExpectedInfluence will be estimated.
  
 # IndivBootSplitting
  Performs data splitting inference by permutation test on the individual static or temporal network using bootstrap to evaluate its accuracy and stability. Inputs include:
  1. `type`, the type of bootstrap procedure. This can either be `"nonparametric"` for testing the accuracy of the estimated edges and centrality indices or `"casedropping"` for assessing the stability of the calculated centrality indices.
- 2. `sample_prob` The vector of sampling proportion for casedropping bootstrap. Default to (0.9,0.8,...0.5).
-#' @param nBoots The number of bootstraps. Default to 500.
-#' @param nCores Number of cores to use in computing results. Set to 1 to not use parallel computing.
-#'   Defaults to 1.
-#' @param verbose Logical. Should progress of the function be printed to the console?
-#'   Defaults to TRUE.
-#' @param library Library location to be used in parallel computing. Default to .libPaths().
-#' @param seed The random seed.
- 
+ 2. `sample_prob`, the vector of sampling proportion for casedropping bootstrap.
+ 3. `nBoots` the number of bootstraps.
