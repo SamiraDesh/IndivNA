@@ -38,7 +38,7 @@ Some important results returned by IndivIsing are:
 3. `estimated_formula` The formula of the estimated edge weights, including the coefficients of the major effects of the nodes and the coefficients of the interaction terms of the nodes and the individual characteristics.
   
 An estimated formula that looks as follows
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndIsing_example1.PNG)
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndIsing_exampleDS.PNG)
 
 for the circled formula suggests that the weight of the edge directed from node Y7 to node Y2 consists of the main effect of Y7 on Y2 (0.555) and the effect of the interaction between Y7 and X3 (0.792) on Y2.
 
@@ -65,6 +65,8 @@ Evaluates the accuracy and stability of the estimated individual static or tempo
  1. `type`, the type of bootstrap procedure. This can either be `"nonparametric"` for testing the accuracy of the estimated edges and centrality indices or `"casedropping"` for assessing the stability of the calculated centrality indices.
  2. `sample_prob`, the vector of sampling proportion for casedropping bootstrap.
  3. `nBoots` the number of bootstraps.
+
+
 
 Two outputs returned by this function that are of note -
 1. `IsingResult_new`, the new IndivIsing model fitted on the inference data set, the part of the original data set not used for training .
