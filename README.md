@@ -14,7 +14,7 @@ devtools::install()
 For successful installation, you need to have `devtools` and `RTools` installed.
 
 # Data
-Here is a table that illustrates the required data structure. Y1 through Y10 represent the nodes i.e., the variables that form our network. X1 through X5 represent the characteristics/ covariates of each observation that may affect the associations between nodes i.e. they account for individual variability in the estimated networks. There are two observations with values at three time points each. 
+Here is a table that illustrates the required data structure in the temporal network scenario. Y1 through Y10 represent the nodes i.e., the variables that form our network. X1 through X5 represent the characteristics/ covariates of each observation that may affect the associations between nodes i.e. they account for individual variability in the estimated networks. There are two samples with observations at three time points each. In the case of a static network, the structure remains the same, except there is no time column and each sample only has one observation.
 
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/NA_exdata.PNG?raw=true)
 
@@ -37,11 +37,11 @@ Some important results returned by IndivIsing are:
 2. `estimated_bias` The formula of the estimated bias term, including the estimated intercept and the coefficients of the major effects of the individual characteristics. 
 3. `estimated_formula` The formula of the estimated edge weights, including the coefficients of the major effects of the nodes and the coefficients of the interaction terms of the nodes and the individual characteristics.
   
-An estimated formula that looks as follows
+An estimated formula for the temporal network may look like this
 
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndIsing_exampleDS.PNG)
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndIsing_exampleDS1.PNG)
 
-for the circled formula suggests that the weight of the edge directed from node Y5 to node Y6 is equal to the effect of the interaction between Y5 and X5 (0.471) on Y6. There is no main effect of Y5 on Y6.
+and the circled formula suggests that the weight of the edge directed from node Y5 to node Y6 is equal to the effect of the interaction between Y5 and X5 (0.471) on Y6. There is no main effect of Y5 on Y6. There also exists an edge that is directed from a node (Y5) to itself, which is possible only in the temporal network case since we account for values of the node at a prior timepoint.
 
 # IndivNetwork
 Generates the individual static or temporal network for a specific subject. The required inputs are:
@@ -50,13 +50,21 @@ Generates the individual static or temporal network for a specific subject. The 
 3. `covar_vec` The vector of individual characteristics for a specific subject of interest needed if `target_id` has not been assigned. The order has to be the same as x_index.
 4. `data` and `id`, the original data set and name of the column in it that indicates the ID of each subject.
 
-A subject with all covariate features equal to 1 with the estimated network illustrated above has an estimated adjacent matrix that looks like this:
+A subject with all covariates equal to 1 with the estimated network illustrated above has an estimated adjacent matrix that looks like this:
 
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNetwork_example.PNG)
 
 This result is stored as `estimated_network`. This matrix translates to the following network:
 
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/NtwrkDiag_example.png)
+
+A static network for another subject with all covariates equal to 0 may look something like -
+
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static.PNG)
+
+with this result translating to this network structure - 
+
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static.png)
 
 
 Another important output of this function is `node_centrality`, which is the matrix of calculated centrality values. In the temporal network case, the statistics estimated are Betweenness, Closeness, InStrength, OutStrength, OutExpectedInfluence and InExpectedInfluence whereas in the case of a static network, given the non-directionality of edges, only Betweenness, Closeness, Strength and ExpectedInfluence will be estimated.
