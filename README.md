@@ -60,7 +60,7 @@ This result is stored as `estimated_network`. This matrix translates to the foll
 
 A static network for another subject with all covariates equal to 0 may look something like -
 
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static.PNG)
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static2.PNG)
 
 with this result translating to this network structure - 
 
