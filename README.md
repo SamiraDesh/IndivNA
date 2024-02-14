@@ -79,30 +79,20 @@ Summarizes the bootstrap results. Important inputs are:
 1. `data`, the inference data set.
 2. `IsingBootResult`, the fitted IndivBootSplitting object.
 3. `IsingResult`, The fitted IndivIsing object.
-5. `sample_covar_mat` The matrix of covariate information for representative subjects to perform casedropping bootstrap.
+4. `sample_covar_mat` The matrix of covariate information for representative subjects to perform casedropping bootstrap.
 
 
+Key results returned by IndivBootSummary:
+1. `test_centrality`, matrix listing the stacked testing results for different centralities between nodes for the first representative subject.
+2. `test_centrality_long`, matrix with the long format listing the stacked testing results for different centralities between nodes for the first representative subject.
+   
+Additional results are returned depending on the type of bootstrap. When running the nonparametric bootstrap, this function also returns -
+1. `boot_data`, a matrix containing all the edge weights estimated in each bootstrap replicate.
+2. `boot_data_summary`, a matrix containing the summary of all bootstrap results.
+3. `edge_data`, a matrix containing all edge weights retained in the original constructed network that were estimated in each bootstrap replicate.
+4. `edge_data_summary`, a matrix containing the summary of all edge weights retained in the original constructed network.
+5. `edge_test`, a matrix listing the test results of whether the selected edges in the IndivIsing object are significantly different from each other.
+6. `edge_quantile`, a matrix listing the range of the differences between two estimated edges out of the selected edges in the IndivIsing object.
+7. `boot_centrality`, a matrix summarizing the centrality information for each subject at each bootstrap. 
 
-
-#' @return An IndivBootnetSummary object.
-#' @returns `boot_data` A matrix containing all the edge weights estimated in each bootstrap replicate.
-#'   Only returned for "nonparametric" bootstrap.
-#' @returns `boot_data_summary` A matrix containing summary of all bootstrap results. Only returned 
-#'   for "nonparametric" bootstrap.
-#' @returns `edge_data` A matrix containing all edge weights retained in the original constructed network that 
-#'   estimated in each bootstrap replicate. Only returned for "nonparametric" bootstrap.
-#' @returns `edge_data_summary` A matrix containing summary of all edge weights retained in the original constructed network.
-#'   Only returned for "nonparametric" bootstrap.
-#' @returns `edge_test` A matrix listing the test results of whether the edges are significantly different
-#'   from each other. Only the selected edges in the IndivIsing object will be listed.
-#'   Only returned for "nonparametric" bootstrap.
-#' @returns `edge_quantile` A matrix listing the range of the differences between two estimated edges. 
-#'   Only the selected edges in the IndivIsing object will be listed. Only returned for "nonparametric" bootstrap.
-#' @returns `boot_centrality` A matrix summarizing the centrality information for each subject at each bootstrap. 
-#'   Only returned for "nonparametric" bootstrap.
-#' @returns `test_centrality` A matrix listing the stacked testing results for different centralities between 
-#'   nodes for the first representative subject.
-#' @returns `test_centrality_long` A matrix with the long format listing the stacked testing results for different centralities between 
-#'   nodes for the first representative subject.
-#' @returns `cor_results` Summary of the correlation results. Only returned for "casedropping" bootstrap.
-#' @returns `time` Time used for computation.
+On the other hand, for the casedropping bootstrap the summary of the correlation results is returned as `cor_results`.
