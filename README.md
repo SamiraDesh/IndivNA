@@ -39,7 +39,7 @@ Some important results returned by IndivIsing are:
   
 An estimated formula for the temporal network may look like this
 
---![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndIsing_exampleDS1.PNG)
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/)
 
 and the circled formula suggests that the weight of the edge directed from node Y5 to node Y6 is equal to the effect of the interaction between Y5 and X5 (0.471) on Y6. There is no main effect of Y5 on Y6. There also exists an edge that is directed from a node (Y5) to itself, which is possible only in the temporal network case since we account for values of the node at a prior timepoint.
 
