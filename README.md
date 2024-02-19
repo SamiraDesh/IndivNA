@@ -3,7 +3,7 @@ An R tool for individual static and temporal network analysis.
 
 
 # Installation
-This is currently the only available and developmental version of the package. You can install it from source on Windows. 
+Currently, this is the only available and developmental version of the package. You can install it from source on Windows. 
 
 ```ruby
 setwd("path to package folder")
@@ -14,7 +14,7 @@ devtools::install()
 For successful installation, you need to have `devtools` and `RTools` installed.
 
 # Data
-Here is a table that illustrates the required data structure in the temporal network scenario. Y1 through Y10 represent the nodes i.e., the variables that form our network. X1 through X5 represent the characteristics/ covariates of each observation that may affect the associations between nodes i.e. they account for individual variability in the estimated networks. There are two samples with observations at three time points each. In the case of a static network, the structure remains the same, except there is no time column and each sample only has one observation.
+Here is a table that illustrates the required data structure for modeling temporal networks. Y1 through Y10 represent the nodes i.e., the variables that form our network. X1 through X5 represent the characteristics/ covariates of each observation that may affect the associations between nodes i.e. they account for individual variability in the estimated networks. There are two samples with observations at three time points each. In the case of a static network, the structure remains the same, except there is no time column and each sample only has one observation.
 
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/NA_exdata.PNG?raw=true)
 
@@ -23,12 +23,12 @@ There is no constraint on the number of nodes or covariates. However, only binar
 
 # IndivIsing
 Estimates the static or temporal network. It only supports lag-1 factorization in estimating temporal networks. The following input parameters need to be specified:
-1. `data`, the training portion of the original data set in case of data splitting inference and the entire data set otherwise.
+1. `data`, the complete data set or the training portion of the original data set in case of data splitting inference.
 2. `y_index` and `x_index`, the indices of the nodes and individual characteristics, respectively.
-3. `networkModel`, 'static' or 'temporal' as appropriate.
-4. `timepoint`, column name of the timepoint variable for the construction of temporal networks. If `networkModel='static'`, then need not be specified.
-5. `family`, must be 'binomial' since it is the only supported type for nodes.
-6. `lowerbound.lambda`, minimum value of tuning parameter lambda (regularization parameter). If one has two networks of different sample sizes but the same number of parameters p, they can be directly compared by setting this value equal to sqrt(log(p)/n), n being the number of observations in the smaller group. 
+3. `networkModel`, `'static'` or `'temporal'` as appropriate.
+4. `timepoint`, column name of the timepoint variable if `networkModel='temporal'`.
+5. `family`, must be `'binomial'`, the only supported type for nodes.
+6. `lowerbound.lambda`, minimum value of tuning parameter lambda (regularization parameter). If one has two networks of different sample sizes but the same number of parameters p, setting this value to sqrt(log(p)/n), where n is the number of observations in the smaller group, allows for their direct comparison.
 7. `gamma`, hyperparameter gamma in the extended BIC.
 8. `AND`, can be TRUE of FALSE to indicate whether the AND-rule or the OR-rule should be used to define the edges in the network.
 
