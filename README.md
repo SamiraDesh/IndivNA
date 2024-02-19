@@ -30,7 +30,7 @@ Estimates the static or temporal network. It only supports lag-1 factorization i
 5. `family`, must be `'binomial'`, the only supported type for nodes.
 6. `lowerbound.lambda`, minimum value of tuning parameter lambda (regularization parameter). If one has two networks of different sample sizes but the same number of parameters p, setting this value to sqrt(log(p)/n), where n is the number of observations in the smaller group, allows for their direct comparison.
 7. `gamma`, hyperparameter gamma in the extended BIC.
-8. `AND`, can be TRUE of FALSE to indicate whether the AND-rule or the OR-rule should be used to define the edges in the network.
+(reference)8. `AND`, can be TRUE of FALSE to indicate whether the AND-rule or the OR-rule should be used to define the edges in the network. 
 
 Some important results returned by IndivIsing are: 
 1. `estimated_thresholds` and `estimated_coeff_raw`, the estimated intercepts and coefficients in the extended Ising model, respectively.
@@ -61,16 +61,16 @@ Estimated adjacency matrix       |  Estimated network
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static.PNG)  |  ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static2.png)
 
 
-Another important output of this function is `node_centrality`, which is the matrix of calculated centrality values. In the temporal network case, the statistics estimated are Betweenness, Closeness, InStrength, OutStrength, OutExpectedInfluence and InExpectedInfluence whereas in the case of a static network, given the non-directionality of edges, only Betweenness, Closeness, Strength and ExpectedInfluence will be estimated.
+Another important output of this function is `node_centrality`, which is the matrix of calculated centrality values. In the temporal network case, the centralities estimated are Betweenness, Closeness, InStrength, OutStrength, OutExpectedInfluence and InExpectedInfluence whereas in the case of a static network, given the non-directionality of edges, only Betweenness, Closeness, Strength and ExpectedInfluence will be estimated.
 
 # IndivBootSplitting
-Evaluates the accuracy and stability of the estimated individual static or temporal network. This is accomplished through bootstrap data splitting inference by permutation test, discussed in our previous work (REF). Inputs include:
+(reference)Evaluates the accuracy and stability of the estimated individual static or temporal network. This is accomplished through bootstrap data splitting inference by permutation test. Inputs include:
  1. `data`, the testing/ inference portion of the original data set.
  3. `type`, the type of bootstrap procedure. This can either be `"nonparametric"` for testing the accuracy of estimated edges and centrality indices or `"casedropping"` for assessing the stability of the calculated centrality indices.
- 4. `sample_prob`, the vector of sampling proportion for casedropping bootstrap.
+ 4. `sample_prob`, a vector of sampling proportions for casedropping bootstrap.
  5. `nBoots` the number of bootstraps.
 
-Two outputs returned by this function that are of note -
+Outputs of note -
 1. `IsingResult_new`, the new IndivIsing model fitted on the inference data set.
 2. `bootResults`, a list containing the bootstraped networks.
 
@@ -84,22 +84,22 @@ Summarizes the bootstrap results. Important inputs are:
 4. `sample_covar_mat` The matrix of covariate information for representative subjects to perform casedropping bootstrap.
 
 
-Key results returned by IndivBootSummary:
-1. `test_centrality`, matrix listing the stacked testing results for different centralities between nodes for the first representative subject.
-2. `test_centrality_long`, matrix with the long format listing the stacked testing results for different centralities between nodes for the first representative subject.
-   
-Additional results are returned depending on the type of bootstrap. When running the nonparametric bootstrap, this function also creates -
+It generates several important results, such as:
 1. `boot_data`, a matrix containing all the edge weights estimated in each bootstrap replicate.
 2. `boot_data_summary`, a matrix containing the summary of all bootstrap results.
 3. `edge_data`, a matrix containing all edge weights retained in the original constructed network that were estimated in each bootstrap replicate.
 4. `edge_data_summary`, a matrix containing the summary of all edge weights retained in the original constructed network.
 5. `edge_test`, a matrix listing the test results of whether the selected edges in the IndivIsing object are significantly different from each other.
 6. `edge_quantile`, a matrix listing the range of the differences between two estimated edges out of the selected edges in the IndivIsing object.
-7. `boot_centrality`, a matrix summarizing the centrality information for each subject at each bootstrap. 
+7. `boot_centrality`, a matrix summarizing the centrality information for each subject at each bootstrap.
 
-On the other hand, for the casedropping bootstrap the summary of the correlation results is returned as `cor_results`.
+   
+Additional results are returned depending on the type of bootstrap. When running the nonparametric bootstrap, this function also creates -
+1. `test_centrality`, matrix listing the stacked testing results for different centralities between nodes for the first representative subject.
+2. `test_centrality_long`, matrix with the long format listing the stacked testing results for different centralities between nodes for the first representative subject.
+In the casedropping bootstrap setting, the summary of the correlation results is returned as `cor_final_results`.
 
-The forest plots below illustrate the summarized edge weights for static and temporal networks - 
+The forest plots below illustrate the summary of edge weights stored in `edge_data_summary` for static and temporal networks - 
 Static        |  Temporal
 :-------------------------:|:-------------------------:
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivBootSummary_static.png)  |  ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivBootSummary_temporal.png)
