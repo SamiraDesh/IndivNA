@@ -94,7 +94,7 @@ Key results returned by IndivBootSummary:
 1. `test_centrality`, matrix listing the stacked testing results for different centralities between nodes for the first representative subject.
 2. `test_centrality_long`, matrix with the long format listing the stacked testing results for different centralities between nodes for the first representative subject.
    
-Additional results are returned depending on the type of bootstrap. When running the nonparametric bootstrap, this function also returns -
+Additional results are returned depending on the type of bootstrap. When running the nonparametric bootstrap, this function also creates -
 1. `boot_data`, a matrix containing all the edge weights estimated in each bootstrap replicate.
 2. `boot_data_summary`, a matrix containing the summary of all bootstrap results.
 3. `edge_data`, a matrix containing all edge weights retained in the original constructed network that were estimated in each bootstrap replicate.
@@ -104,3 +104,5 @@ Additional results are returned depending on the type of bootstrap. When running
 7. `boot_centrality`, a matrix summarizing the centrality information for each subject at each bootstrap. 
 
 On the other hand, for the casedropping bootstrap the summary of the correlation results is returned as `cor_results`.
+
+
