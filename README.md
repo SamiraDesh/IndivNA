@@ -55,13 +55,10 @@ Estimated adjacency matrix       |  Estimated network
 :-------------------------:|:-------------------------:
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_temporal.PNG)  |  ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_temporal2.png)
 
-A static network for another subject may look something like -
-
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static.PNG)
-
-with this result translating to this network structure - 
-
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static2.png)
+Similarly, an estimated static network for a subject may look something like -
+Estimated adjacency matrix       |  Estimated network
+:-------------------------:|:-------------------------:
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static.PNG)  |  ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static2.png)
 
 
 Another important output of this function is `node_centrality`, which is the matrix of calculated centrality values. In the temporal network case, the statistics estimated are Betweenness, Closeness, InStrength, OutStrength, OutExpectedInfluence and InExpectedInfluence whereas in the case of a static network, given the non-directionality of edges, only Betweenness, Closeness, Strength and ExpectedInfluence will be estimated.
