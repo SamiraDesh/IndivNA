@@ -106,9 +106,11 @@ Additional results are returned depending on the type of bootstrap. When running
 On the other hand, for the casedropping bootstrap the summary of the correlation results is returned as `cor_results`.
 
 The forest plots below illustrate the summarized edge weights for static and temporal networks - 
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivBootSummary_static.png)  |  ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivBootSummary_temporal.png)
 
-![alt-text-1](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivBootSummary_static.png "title-1" = 50%x)
-![alt-text-2](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivBootSummary_temporal.png "title-2" = 50%x)
+
 
 
 
