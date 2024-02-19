@@ -60,11 +60,11 @@ This result is stored as `estimated_network`. This matrix translates to the foll
 
 A static network for another subject with all nodes and covariates equal to 0 may look something like -
 
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static2.PNG)
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static.PNG)
 
 with this result translating to this network structure - 
 
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static.png)
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_STATIC2.png)
 
 
 Another important output of this function is `node_centrality`, which is the matrix of calculated centrality values. In the temporal network case, the statistics estimated are Betweenness, Closeness, InStrength, OutStrength, OutExpectedInfluence and InExpectedInfluence whereas in the case of a static network, given the non-directionality of edges, only Betweenness, Closeness, Strength and ExpectedInfluence will be estimated.
