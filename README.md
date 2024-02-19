@@ -107,7 +107,7 @@ On the other hand, for the casedropping bootstrap the summary of the correlation
 
 The forest plots below illustrate the summarized edge weights for static and temporal networks - 
 
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivBootSummary_static.png) ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivBootSummary_temporal.png)
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivBootSummary_static.png "Static" =50%x) ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivBootSummary_temporal.png "Temporal" =50%x)
 
 
 
