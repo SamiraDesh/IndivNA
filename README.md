@@ -41,7 +41,7 @@ An estimated formula for the temporal network may look like this
 
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivIsing_common.PNG)
 
-and the circled formula suggests that the weight of the edge directed from node Y5 to node Y6 is equal to the effect of the interaction between Y5 and X5 (0.471) on Y6. There is no main effect of Y5 on Y6. There also exists an edge that is directed from a node (Y5) to itself, which is possible only in the temporal network case since we account for values of the node at a prior timepoint.
+and the circled formula suggests that the weight of the edge directed from node Y6 to node Y2 is equal to the effect of the interaction between Y6 and X4 (0.096) on Y2. There is no main effect of Y6 on Y2. There also exists an edge that is directed from a node (Y10 AND Y6) to itself, which is possible only in the temporal network case since we account for values of the node at a prior timepoint.
 
 # IndivNetwork
 Generates the individual static or temporal network for a specific subject. The required inputs are:
