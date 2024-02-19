@@ -50,7 +50,7 @@ Generates the individual static or temporal network for a specific subject. The 
 3. `covar_vec` The vector of individual characteristics for a specific subject of interest needed if `target_id` has not been assigned. The order has to be the same as x_index.
 4. `data` and `id`, the original data set and name of the column in it that indicates the ID of each subject.
 
-A subject with all nodes and covariates equal to 1 with the estimated network illustrated above has an estimated adjacent matrix that looks like this:
+A subject with all covariates equal to 1 with the estimated network illustrated above has an estimated adjacent matrix that looks like this:
 
 ![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNetwork_example.PNG)
 
