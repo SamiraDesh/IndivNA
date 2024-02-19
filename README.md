@@ -50,13 +50,13 @@ Generates the individual static or temporal network for a specific subject. The 
 3. `covar_vec` The vector of individual characteristics for a specific subject of interest needed if `target_id` has not been assigned. The order has to be the same as x_index.
 4. `data` and `id`, the original data set and name of the column in it that indicates the ID of each subject.
 
-A subject with all covariates equal to 1 with the estimated network illustrated above has an estimated adjacent matrix that looks like this:
+Considering the estimated network above, a subject with all nodes, except Y7 and Y9, and all covariates equal to 1 has an estimated adjacent matrix that looks like this:
 
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNetwork_example.PNG)
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_temporal.PNG)
 
 This result is stored as `estimated_network`. This matrix translates to the following network:
 
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/NtwrkDiag_example.png)
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_temporal2.png)
 
 A static network for another subject with all nodes and covariates equal to 0 may look something like -
 
@@ -64,7 +64,7 @@ A static network for another subject with all nodes and covariates equal to 0 ma
 
 with this result translating to this network structure - 
 
-![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_STATIC2.png)
+![alt text](https://github.com/SamiraDesh/IndTempNetAna/blob/main/IndivNtwrk_static2.png)
 
 
 Another important output of this function is `node_centrality`, which is the matrix of calculated centrality values. In the temporal network case, the statistics estimated are Betweenness, Closeness, InStrength, OutStrength, OutExpectedInfluence and InExpectedInfluence whereas in the case of a static network, given the non-directionality of edges, only Betweenness, Closeness, Strength and ExpectedInfluence will be estimated.
