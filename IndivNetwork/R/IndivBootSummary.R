@@ -131,12 +131,12 @@ IndivBootSummary <- function(data, #data <- data_inference
             str_vec <- strsplit(IsingResult$estimated_formula[i,j], "+", fixed = TRUE)[[1]]
             for(k in 1:length(str_vec)){
               if(!grepl(">>", str_vec[k], fixed = TRUE) & str_vec[k]!=""){
-                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[i], "-",
-                                                       colnames(IsingResult$estimated_formula)[j]))
+                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[j], "-",
+                                                       colnames(IsingResult$estimated_formula)[i]))
               }
               else if(grepl(">>", str_vec[k], fixed = TRUE) & str_vec[k]!=""){
-                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[i], "-",
-                                                       colnames(IsingResult$estimated_formula)[j], ":",
+                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[j], "-",
+                                                       colnames(IsingResult$estimated_formula)[i], ":",
                                                        sub(".*>>", "", str_vec[k])))
               }
             }
@@ -152,12 +152,12 @@ IndivBootSummary <- function(data, #data <- data_inference
 
             for(k in 1:length(str_vec)){
               if(!grepl(">>", str_vec[k], fixed = TRUE) & str_vec[k]!=""){
-                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[i], "-",
-                                                       colnames(IsingResult$estimated_formula)[j]))
+                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[j], "-",
+                                                       colnames(IsingResult$estimated_formula)[i]))
               }
               else if(grepl(">>", str_vec[k], fixed = TRUE) & str_vec[k]!=""){
-                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[i], "-",
-                                                       colnames(IsingResult$estimated_formula)[j], ":",
+                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[j], "-",
+                                                       colnames(IsingResult$estimated_formula)[i], ":",
                                                        sub(".*>>", "", str_vec[k])))
               }
             }
@@ -569,8 +569,8 @@ IndivBootSummary <- function(data, #data <- data_inference
             var_index1 <- c(j, (length(y_index)+j*length(x_index)+1):(length(y_index)+(j+1)*length(x_index)))
             var_index2 <- c(i, (length(y_index)+i*length(x_index)+1):(length(y_index)+(i+1)*length(x_index)))
 
-            edge_names <- c(edge_names, rep(c(paste0(y_names[i], "-", y_names[j]), #ijth edge name
-                                              paste0(y_names[i], "-", y_names[j], ":", x_names)), #ijth interaction edge names (X1-X5)
+            edge_names <- c(edge_names, rep(c(paste0(y_names[j], "-", y_names[i]), #ijth edge name
+                                              paste0(y_names[j], "-", y_names[i], ":", x_names)), #ijth interaction edge names (X1-X5)
                                             times=nBoots*length(sample_prob)))
             if(IsingResult$AND==FALSE){
               edge_weights <- c(edge_weights, do.call(c,lapply(1:nBoots, function(k) do.call(c,lapply(1:length(sample_prob), function (q) (boot_estimates[i+((k-1)*5+(q-1))*length(y_index),var_index]+ boot_estimates[j+((k-1)*5+(q-1))*length(y_index),var_index])/2)))))
@@ -587,8 +587,8 @@ IndivBootSummary <- function(data, #data <- data_inference
         for(j in 1:length(y_index)){ #j<-6
           #for j, indices for itself and interactions with features
           var_index <- c(j, (length(y_index)+j*length(x_index)+1):(length(y_index)+(j+1)*length(x_index)))
-          edge_names <- c(edge_names, rep(c(paste0(y_names[i], "-", y_names[j]),
-                                            paste0(y_names[i], "-", y_names[j], ":", x_names)),
+          edge_names <- c(edge_names, rep(c(paste0(y_names[j], "-", y_names[i]),
+                                            paste0(y_names[j], "-", y_names[i], ":", x_names)),
                                           times=nBoots*length(sample_prob)))
 
           edge_weights <- c(edge_weights, do.call(c, lapply(1:nBoots, function(k) do.call(c, lapply(1:length(sample_prob), function (q) boot_estimates[i+((k-1)*5+(q-1))*length(y_index),var_index])))))
@@ -621,13 +621,13 @@ IndivBootSummary <- function(data, #data <- data_inference
             #split terms in the predictor
             for(k in 1:length(str_vec)){ #k<-1, index for term number
               if(!grepl(">>", str_vec[k], fixed = TRUE) & str_vec[k]!=""){
-                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[i], "-",
-                                                       colnames(IsingResult$estimated_formula)[j]))
+                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[j], "-",
+                                                       colnames(IsingResult$estimated_formula)[i]))
                 #select edges is the string indicating the pair
               }
               else if(grepl(">>", str_vec[k], fixed = TRUE) & str_vec[k]!=""){ #k<-2
-                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[i], "-",
-                                                       colnames(IsingResult$estimated_formula)[j], ":",
+                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[j], "-",
+                                                       colnames(IsingResult$estimated_formula)[i], ":",
                                                        sub(".*>>", "", str_vec[k])))
                 #substitute the estimate with just the feature name
               }
@@ -644,12 +644,12 @@ IndivBootSummary <- function(data, #data <- data_inference
 
             for(k in 1:length(str_vec)){
               if(!grepl(">>", str_vec[k], fixed = TRUE) & str_vec[k]!=""){
-                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[i], "-",
-                                                       colnames(IsingResult$estimated_formula)[j]))
+                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[j], "-",
+                                                       colnames(IsingResult$estimated_formula)[i]))
               }
               else if(grepl(">>", str_vec[k], fixed = TRUE) & str_vec[k]!=""){
-                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[i], "-",
-                                                       colnames(IsingResult$estimated_formula)[j], ":",
+                select_edges <- c(select_edges, paste0(colnames(IsingResult$estimated_formula)[j], "-",
+                                                       colnames(IsingResult$estimated_formula)[i], ":",
                                                        sub(".*>>", "", str_vec[k])))
               }
             }
