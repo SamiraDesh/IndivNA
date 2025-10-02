@@ -1,0 +1,23 @@
+Package: IndivNetwork
+Title: Construct individual network for binary nodes. 
+Version: 0.0.0.9000
+Authors@R: 
+    person("Yiwang", "Zhou", , "yiwang.zhou@stjude.org", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-8023-205X"))
+Description: This package contains functions to construct both static and temporal networks for binary nodes by incorporating individual characteristics into the estimation of edge weights. Construction of the network is performed based on the Ising model. Extensions are made to the Ising model to include individual characteristics in the modeling of the edge weights, which enables the estimation of individual networks. Accuracy and stability of the constructed networks are evaluated by bootstrap. The bootstrap procedure includes 1) assessing the accuracy of estimated network connections, 2) examining the stability of centrality indices, and 3) testing whether network connections for different variables differ from each other. 
+License: `use_mit_license()`
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    markdown
+VignetteBuilder: knitr
+Imports: qgraph,
+	parallel,
+	glmnet,
+	pbapply,
+	igraph,
+	magrittr,
+	IsingSampler,
+	dplyr
